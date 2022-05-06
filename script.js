@@ -1,4 +1,8 @@
 var progress = 0;
+var c = document.getElementById("canvas");
+var ctx = c.getContext('2d');
+var img = new Image();
+img.src = 'donateButton.png';
 
 
 function prog() {
@@ -16,6 +20,16 @@ function prog() {
 
 function progCont() {
     var interval = setInterval(prog, 100);
+}
+
+window.onload = function() {
+    var cursorX;
+    var cursorY;
+    document.onmousemove = function(e) {
+        cursorX = e.pageX;
+        cursorY = e.pageY;
+    }
+    ctx.drawImage(img, cursorX, cursorY);
 }
 
 progCont();
